@@ -11279,3 +11279,17 @@ footer.sticky-footer .copyright {
 body.sidebar-toggled footer.sticky-footer {
   width: 100%;
 }
+
+/* Custom Classes */
+.movieCard {
+  transition: transform 0.3s ease-in-out;
+}
+
+.movieCard:hover {
+  transform: scale(1.03);
+  cursor: pointer;
+}
+
+.checked {
+  color: gold;
+}

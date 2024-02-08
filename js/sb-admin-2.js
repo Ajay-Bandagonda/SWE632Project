@@ -54,3 +54,46 @@
   });
 
 })(jQuery); // End of use strict
+
+function toggleEditable() {
+  var contentElement = document.getElementById("userReview");
+
+  // Remove existing event listeners
+  contentElement.removeEventListener("blur", onInputBlur);
+
+  if (contentElement.tagName.toLowerCase() === "p") {
+    // Create a new input element
+    var inputElement = document.createElement("textarea");
+    inputElement.type = "text";
+    inputElement.value = contentElement.innerText;
+    inputElement.name = "userReviewEdit"
+    inputElement.id = "userReviewEdit"
+    inputElement.style = "height: 75%;"
+    inputElement.classList.add("form-control")
+
+    // Replace the paragraph with the input
+    contentElement.parentNode.replaceChild(inputElement, contentElement);
+
+    // Focus on the input for immediate editing
+    inputElement.focus();
+
+    // Add an event listener to revert to paragraph on blur
+    inputElement.addEventListener("blur", onInputBlur);
+  } else if (contentElement.tagName.toLowerCase() === "input") {
+    // Create a new paragraph element
+    var newParagraph = document.createElement("p");
+    newParagraph.innerText = contentElement.value;
+
+    // Replace the input with the paragraph
+    contentElement.parentNode.replaceChild(newParagraph, contentElement);
+  }
+}
+
+function onInputBlur() {
+  var inputElement = document.querySelector("#editableContent input");
+  var newParagraph = document.createElement("p");
+  newParagraph.innerText = inputElement.value;
+
+  // Replace the input with the new paragraph
+  inputElement.parentNode.replaceChild(newParagraph, inputElement);
+}
