@@ -55,45 +55,32 @@
 
 })(jQuery); // End of use strict
 
-function toggleEditable() {
-  var contentElement = document.getElementById("userReview");
+document.getElementById('userReview').addEventListener('click', convertToTextarea)
 
-  // Remove existing event listeners
-  contentElement.removeEventListener("blur", onInputBlur);
+function convertToTextarea() {
+  
+  var paragraph = document.getElementById("userReview");
+  var textarea = document.createElement("textarea");
 
-  if (contentElement.tagName.toLowerCase() === "p") {
-    // Create a new input element
-    var inputElement = document.createElement("textarea");
-    inputElement.type = "text";
-    inputElement.value = contentElement.innerText;
-    inputElement.name = "userReviewEdit"
-    inputElement.id = "userReviewEdit"
-    inputElement.style = "height: 75%;"
-    inputElement.classList.add("form-control")
+  textarea.type = "text";
+  textarea.value = paragraph.innerText;
+  textarea.name = "userReviewEdit"
+  textarea.id = "userReviewEdit"
+  textarea.style = "height: 75%;"
+  textarea.classList.add("form-control")
 
-    // Replace the paragraph with the input
-    contentElement.parentNode.replaceChild(inputElement, contentElement);
+  paragraph.parentNode.replaceChild(textarea, paragraph);
 
-    // Focus on the input for immediate editing
-    inputElement.focus();
-
-    // Add an event listener to revert to paragraph on blur
-    inputElement.addEventListener("blur", onInputBlur);
-  } else if (contentElement.tagName.toLowerCase() === "input") {
-    // Create a new paragraph element
-    var newParagraph = document.createElement("p");
-    newParagraph.innerText = contentElement.value;
-
-    // Replace the input with the paragraph
-    contentElement.parentNode.replaceChild(newParagraph, contentElement);
-  }
+  textarea.focus();
 }
 
-function onInputBlur() {
-  var inputElement = document.querySelector("#editableContent input");
-  var newParagraph = document.createElement("p");
-  newParagraph.innerText = inputElement.value;
+function saveAndConvertToParagraph() {
+  var textarea = document.querySelector("textarea");
+  var newText = textarea.value;
 
-  // Replace the input with the new paragraph
-  inputElement.parentNode.replaceChild(newParagraph, inputElement);
+  var paragraph = document.createElement("p");
+  paragraph.id = "userReview";
+  paragraph.textContent = newText;
+
+  textarea.parentNode.replaceChild(paragraph, textarea);
 }
