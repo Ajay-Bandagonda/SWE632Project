@@ -84,3 +84,54 @@ function saveAndConvertToParagraph() {
 
   textarea.parentNode.replaceChild(paragraph, textarea);
 }
+function showSearchedMovie() {
+  var searchBar = document.querySelector("#modalSearchBar")
+  if (searchBar.value) {
+      var element = document.querySelector("#watchlistModal .modal-body")
+
+      var htmlToAdd =
+      `
+      <div class="mt-3">
+          <h5 style="text-align: center;">Is this the movie you were looking for?</h5>
+          <div class="card mt-3" style="width: 18rem; margin: 0 auto;">
+              <a data-bs-toggle="modal" data-bs-target="#reviewModal1">
+                  <img src="https://m.media-amazon.com/images/I/510EFCtJuZL.jpg" class="card-img-top" alt="...">
+                  <div class="card-body">                                                   
+                      <div>
+                          <h5 class="card-title" style="color: black; font-weight: bold;">Inglorious Basterds</h5>
+                      </div> 
+                      <h6 class="mt-2 mb-2">Director: Quentin Tarantino</h6>                                          
+                  </div>
+              </a>
+          </div>
+      </div>
+      `
+                        
+      element.innerHTML += htmlToAdd;
+      document.getElementById("addToWatchlistBtn").setAttribute("style", "display: block;")
+  }
+}
+
+
+function addToWatchlist() {
+  var watchlist = document.querySelector("#watchlist")
+  var movieAppearedinModal = document.querySelector("#watchlistModal .modal-body").childElementCount
+  if (movieAppearedinModal === 2) {
+      var htmlToAdd =
+      `
+      <div class="card movieCard" style="width: 18rem;">
+          <a data-bs-toggle="modal" data-bs-target="#reviewModal1">
+              <img src="https://m.media-amazon.com/images/I/510EFCtJuZL.jpg" class="card-img-top" alt="...">
+              <div class="card-body">                                                   
+                  <div>
+                      <h5 class="card-title" style="color: black; font-weight: bold;">Inglorious Basterds</h5>
+                  </div> 
+                  <h6 class="mt-2 mb-2">Director: Quentin Tarantino</h6>                                          
+              </div>
+          </a>
+      </div>
+      `
+                        
+      watchlist.innerHTML += htmlToAdd;
+  }
+}

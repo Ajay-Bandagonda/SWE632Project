@@ -11282,6 +11282,7 @@ body.sidebar-toggled footer.sticky-footer {
 
 /* Custom Classes */
 .movieCard {
+  margin: 1em;
   transition: transform 0.3s ease-in-out;
 }
 
@@ -11292,4 +11293,11 @@ body.sidebar-toggled footer.sticky-footer {
 
 .checked {
   color: gold;
+}
+
+.carousel-inner>.item{
+  /*disables white flash*/
+  -webkit-transition: -webkit-transform .5s ease-in-out;
+  -o-transition: -o-transform .5s ease-in-out;
+  transition: transform .5s ease-in-out;
 }
