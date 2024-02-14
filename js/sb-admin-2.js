@@ -59,7 +59,7 @@ document.getElementById('userReview').addEventListener('click', convertToTextare
 
 function convertToTextarea() {
   
-  var paragraph = document.getElementById("userReview");
+  var paragraph = document.getElementsByClassName("userReview")[0];
   var textarea = document.createElement("textarea");
 
   textarea.type = "text";
@@ -75,11 +75,11 @@ function convertToTextarea() {
 }
 
 function saveAndConvertToParagraph() {
-  var textarea = document.querySelector("textarea");
+  var textarea = document.querySelector(".modal-body textarea");
   var newText = textarea.value;
 
   var paragraph = document.createElement("p");
-  paragraph.id = "userReview";
+  paragraph.classList.add("userReview");
   paragraph.textContent = newText;
 
   textarea.parentNode.replaceChild(paragraph, textarea);
@@ -112,6 +112,65 @@ function showSearchedMovie() {
   }
 }
 
+function showSearchedMovieLog() {
+  var searchBar = document.querySelector("#modalSearchBarLog")
+  if (searchBar.value) {
+      var element = document.querySelector("#logModal .modal-body")
+
+      var htmlToAdd =
+      `
+      <div class="mt-3" style="margin: 0 auto; text-align: center;">
+          <h5>Is this the movie you were looking for?</h5>
+          <div class="btn-group" role="group">
+              <button type="button" class="btn btn-success" id="correctMovie" onclick="initalReviewLog()">Yes</button>
+              <button type="button" class="btn btn-danger">No</button>
+          </div>
+          <div class="card mt-3" style="width: 18rem; margin: 0 auto;">
+              <a data-bs-toggle="modal" data-bs-target="#reviewModal1">
+                  <img src="img/fake-movie-poster.png" class="card-img-top" alt="...">
+                  <div class="card-body">                                                   
+                      <div>
+                          <h5 class="card-title" style="color: black; font-weight: bold;">Example Movie Name</h5>
+                      </div> 
+                      <h6 class="mt-2 mb-2">Director: Some Director</h6>                                          
+                  </div>
+              </a>
+          </div>
+      </div>
+      `
+                        
+      element.innerHTML += htmlToAdd;
+      document.getElementById("addToLogBtn").setAttribute("style", "display: block;")
+  }
+}
+
+function initalReviewLog() {
+  var element = document.querySelector("#logModal .modal-body")
+  var htmlToAdd =
+  `
+  <div class="row">
+      <div class="col-5">
+          <div class="card" style="width: 18rem;">
+              <img src="img/fake-movie-poster.png" class="card-img-top" alt="...">
+          </div>
+          <div class="mt-3">
+              Your Rating: 
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa-solid fa-star-half-stroke checked"></span>
+          </div>
+      </div>
+      <div class="col"> 
+          <h2>Your Review</h2>
+          <textarea name="userInitialReviewEdit" id="userInitialReviewEdit" class="form-control userReview" style="height: 75%;"></textarea>                                    
+      </div>
+  </div>
+  `
+  document.querySelector("#logModal .modal-dialog").classList.add("modal-lg")
+  element.innerHTML = htmlToAdd;
+}
 
 function addToWatchlist() {
   var watchlist = document.querySelector("#watchlist")
@@ -133,5 +192,65 @@ function addToWatchlist() {
       `
                         
       watchlist.innerHTML += htmlToAdd;
+      document.querySelector("#watchlistModal .modal-body").innerHTML = 
+      `
+      <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 w-100 pr-3">
+          <div class="input-group">
+              <input id="modalSearchBar" type="text" class="form-control bg-light border-0 small" placeholder="Search..."
+                  aria-label="Search" aria-describedby="basic-addon2">
+              <div class="input-group-append">
+                  <button class="btn btn-primary" id="modalSearchButton" onclick="showSearchedMovie()" type="button">
+                      <i class="fas fa-search fa-sm"></i>
+                  </button>
+              </div>
+          </div>
+      </form>
+      `
+      document.getElementById("addToWatchlistBtn").setAttribute("style", "display: none;")
   }
+}
+
+let numMoviesinLog = 1;
+
+function addToLog() {
+  var movieLog = document.querySelector("#movieLog")
+  var htmlToAdd =
+  `
+  <div class="card movieCard" style="width: 18rem;">
+      <a data-bs-toggle="modal" data-bs-target="#reviewModal1">
+          <img src="img/fake-movie-poster.png" class="card-img-top" alt="...">
+          <div class="card-body">                                                   
+              <div>
+                  <h5 class="card-title" style="color: black; font-weight: bold;">Example Movie Name</h5>
+              </div> 
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa-solid fa-star-half-stroke checked"></span>
+              <h6 class="mt-2 mb-2">Director: Some name here</h6>                        
+              <button type="button" class="btn btn-block btn-primary" data-bs-toggle="modal" data-bs-target="#reviewModal1">
+                  Read Review
+              </button>                                        
+          </div>
+      </a>
+  </div>  
+  `
+                    
+  movieLog.innerHTML += htmlToAdd;
+  document.querySelector("#logModal .modal-body").innerHTML = 
+  `
+  <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 w-100 pr-3">
+      <div class="input-group">
+          <input id="modalSearchBarLog" type="text" class="form-control bg-light border-0 small" placeholder="Search..."
+              aria-label="Search" aria-describedby="basic-addon2">
+          <div class="input-group-append">
+              <button class="btn btn-primary" id="logModalSearchButton" onclick="showSearchedMovieLog()" type="button">
+                  <i class="fas fa-search fa-sm"></i>
+              </button>
+          </div>
+      </div>
+  </form>
+  `
+  document.getElementById("addToLogBtn").setAttribute("style", "display: none;")
 }

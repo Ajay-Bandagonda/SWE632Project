@@ -194,37 +194,39 @@
                     <!-- Page Heading -->
                     <h1 class="h3 mb-4 text-gray-800">Watchlist</h1>
                     
-                    <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary" style="float: right;" data-bs-toggle="modal" data-bs-target="#watchlistModal">
-                        Add Movie
-                    </button>
-                    
-                    <!-- Modal -->
-                    <div class="modal fade" id="watchlistModal" tabindex="-1" aria-labelledby="watchlistModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="watchlistModalLabel">Modal title</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 w-100 pr-3">
-                                    <div class="input-group">
-                                        <input id="modalSearchBar" type="text" class="form-control bg-light border-0 small" placeholder="Search..."
-                                            aria-label="Search" aria-describedby="basic-addon2">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-primary" id="modalSearchButton" onclick="showSearchedMovie()" type="button">
-                                                <i class="fas fa-search fa-sm"></i>
-                                            </button>
+                    <div class="row justify-content-end">
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#watchlistModal">
+                            Add to Watchlist
+                        </button>
+                        
+                        <!-- Modal -->
+                        <div class="modal fade" id="watchlistModal" tabindex="-1" aria-labelledby="watchlistModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="watchlistModalLabel">Add to Watchlist</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 w-100 pr-3">
+                                        <div class="input-group">
+                                            <input id="modalSearchBar" type="text" class="form-control bg-light border-0 small" placeholder="Search..."
+                                                aria-label="Search" aria-describedby="basic-addon2">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-primary" id="modalSearchButton" onclick="showSearchedMovie()" type="button">
+                                                    <i class="fas fa-search fa-sm"></i>
+                                                </button>
+                                            </div>
                                         </div>
-                                    </div>
-                                </form>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary" id="addToWatchlistBtn" data-bs-dismiss="modal" onclick="addToWatchlist()" style="display: none;">Add to Watchlist</button>
+                                </div>
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary" id="addToWatchlistBtn" data-bs-dismiss="modal" onclick="addToWatchlist()" style="display: none;">Add to Watchlist</button>
                             </div>
-                        </div>
                         </div>
                     </div>
 
@@ -232,16 +234,76 @@
                         <!-- Movie Card -->
                         <div class="card movieCard" style="width: 18rem;">
                             <a data-bs-toggle="modal" data-bs-target="#reviewModal1">
-                                <img src="https://m.media-amazon.com/images/I/510EFCtJuZL.jpg" class="card-img-top" alt="...">
+                                <img src="img/fake-movie-poster.png" class="card-img-top" alt="...">
                                 <div class="card-body">                                                   
                                     <div>
-                                        <h5 class="card-title" style="color: black; font-weight: bold;">Inglorious Basterds</h5>
+                                        <h5 class="card-title" style="color: black; font-weight: bold;">Example Movie Name</h5>
                                     </div> 
-                                    <h6 class="mt-2 mb-2">Director: Quentin Tarantino</h6>                                          
+                                    <h6 class="mt-2 mb-2">Director: Some Director</h6>                                          
                                 </div>
                             </a>
                         </div>
-                    </div>                    
+                        <!-- Movie Card -->
+                        <div class="card movieCard" style="width: 18rem;">
+                            <a data-bs-toggle="modal" data-bs-target="#reviewModal1">
+                                <img src="img/fake-movie-poster.png" class="card-img-top" alt="...">
+                                <div class="card-body">                                                   
+                                    <div>
+                                        <h5 class="card-title" style="color: black; font-weight: bold;">Example Movie Name</h5>
+                                    </div> 
+                                    <h6 class="mt-2 mb-2">Director: Some Director</h6>                                          
+                                </div>
+                            </a>
+                        </div>
+                        <!-- Movie Card -->
+                        <div class="card movieCard" style="width: 18rem;">
+                            <a data-bs-toggle="modal" data-bs-target="#reviewModal1">
+                                <img src="img/fake-movie-poster.png" class="card-img-top" alt="...">
+                                <div class="card-body">                                                   
+                                    <div>
+                                        <h5 class="card-title" style="color: black; font-weight: bold;">Example Movie Name</h5>
+                                    </div> 
+                                    <h6 class="mt-2 mb-2">Director: Some Director</h6>                                          
+                                </div>
+                            </a>
+                        </div>
+                        <!-- Movie Card -->
+                        <div class="card movieCard" style="width: 18rem;">
+                            <a data-bs-toggle="modal" data-bs-target="#reviewModal1">
+                                <img src="img/fake-movie-poster.png" class="card-img-top" alt="...">
+                                <div class="card-body">                                                   
+                                    <div>
+                                        <h5 class="card-title" style="color: black; font-weight: bold;">Example Movie Name</h5>
+                                    </div> 
+                                    <h6 class="mt-2 mb-2">Director: Some Director</h6>                                          
+                                </div>
+                            </a>
+                        </div>
+                        <!-- Movie Card -->
+                        <div class="card movieCard" style="width: 18rem;">
+                            <a data-bs-toggle="modal" data-bs-target="#reviewModal1">
+                                <img src="img/fake-movie-poster.png" class="card-img-top" alt="...">
+                                <div class="card-body">                                                   
+                                    <div>
+                                        <h5 class="card-title" style="color: black; font-weight: bold;">Example Movie Name</h5>
+                                    </div> 
+                                    <h6 class="mt-2 mb-2">Director: Some Director</h6>                                          
+                                </div>
+                            </a>
+                        </div>
+                        <!-- Movie Card -->
+                        <div class="card movieCard" style="width: 18rem;">
+                            <a data-bs-toggle="modal" data-bs-target="#reviewModal1">
+                                <img src="img/fake-movie-poster.png" class="card-img-top" alt="...">
+                                <div class="card-body">                                                   
+                                    <div>
+                                        <h5 class="card-title" style="color: black; font-weight: bold;">Example Movie Name</h5>
+                                    </div> 
+                                    <h6 class="mt-2 mb-2">Director: Some Director</h6>                                          
+                                </div>
+                            </a>
+                        </div>
+                    </div>                
                 </div>
                 <!-- /.container-fluid -->
 

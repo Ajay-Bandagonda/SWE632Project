@@ -195,59 +195,98 @@
                     <h1 class="h3 mb-4 text-gray-800">Log</h1>
                     <!-- Button trigger modal -->
 
-                    <!-- Movie Card -->
-                    <div class="card movieCard" style="width: 18rem;">
-                        <a data-bs-toggle="modal" data-bs-target="#reviewModal1">
-                            <img src="https://m.media-amazon.com/images/I/510EFCtJuZL.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">                                                   
-                                <div>
-                                    <h5 class="card-title" style="color: black; font-weight: bold;">Inglorious Basterds</h5>
-                                </div> 
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa-solid fa-star-half-stroke checked"></span>
-                                <h6 class="mt-2 mb-2">Director: Quentin Tarantino</h6>                        
-                                <button type="button" class="btn btn-block btn-primary" data-bs-toggle="modal" data-bs-target="#reviewModal1">
-                                    Read Review
-                                </button>                    
-                            </div>
-                        </a>
-                    </div>                      
-                    <!-- Modal -->
-                    <div class="modal fade reviewModal" id="reviewModal1" tabindex="-1" aria-labelledby="reviewModal1Label" aria-hidden="true">
-                        <div class="modal-dialog modal-lg">
+                    <div class="row justify-content-end">
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#logModal">
+                            Log Movie
+                        </button>
+                        
+                        <!-- Modal -->
+                        <div class="modal fade" id="logModal" tabindex="-1" aria-labelledby="logModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="reviewModal1Label">Inglorious Basterds</h1>
+                                    <h1 class="modal-title fs-5" id="logModalLabel">Log Movie</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body container">
-                                    <div class="row">
-                                        <div class="col-5">
-                                            <div class="card" style="width: 18rem;">
-                                                <img src="https://m.media-amazon.com/images/I/510EFCtJuZL.jpg" class="card-img-top" alt="...">
-                                            </div>
-                                            <div class="mt-3">
-                                                Your Rating: 
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa-solid fa-star-half-stroke checked"></span>
+                                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 w-100 pr-3">
+                                        <div class="input-group">
+                                            <input id="modalSearchBarLog" type="text" class="form-control bg-light border-0 small" placeholder="Search..."
+                                                aria-label="Search" aria-describedby="basic-addon2">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-primary" id="logModalSearchButton" onclick="showSearchedMovieLog()" type="button">
+                                                    <i class="fas fa-search fa-sm"></i>
+                                                </button>
                                             </div>
                                         </div>
-                                        <div class="col"> 
-                                            <h2>Your Review</h2>
-                                            <p id="userReview">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque fuga eveniet rem excepturi quae nemo ipsum vitae. Provident qui necessitatibus animi dolorem sed explicabo hic nobis voluptatibus consectetur doloremque natus est alias dolore, consequuntur laborum fuga velit consequatur sit ipsum obcaecati exercitationem accusamus tempore. Consectetur fugiat doloribus sapiente, praesentium dolore exercitationem veritatis magni repudiandae rem officia rerum enim blanditiis assumenda sunt dolorum voluptatibus ducimus. Dolorum optio animi ad consectetur iste ducimus iure omnis impedit eos doloribus libero assumenda, incidunt esse ut ullam. Sit placeat dicta asperiores nemo ab veniam culpa eligendi voluptatum sed quisquam, esse odit, nisi optio, magnam quasi.</p>                                        
-                                            <button class="btn btn-secondary mt-3" onclick="convertToTextarea()">Toggle Textbox</button>
-                                        </div>
-                                    </div>
+                                    </form>
+                                    
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" onclick="saveAndConvertToParagraph()" id="saveButton" class="btn btn-primary">Save changes</button>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                    <button type="button" class="btn btn-primary" id="addToLogBtn" data-bs-dismiss="modal" onclick="addToLog()" style="display: none;">Log Movie</button>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row" id="movieLog">
+                        <!-- Movie Card -->
+                        <div class="card movieCard" style="width: 18rem;">
+                            <a data-bs-toggle="modal" data-bs-target="#reviewModal1">
+                                <img src="img/fake-movie-poster.png" class="card-img-top" alt="...">
+                                <div class="card-body">                                                   
+                                    <div>
+                                        <h5 class="card-title" style="color: black; font-weight: bold;">Example Movie Name</h5>
+                                    </div> 
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa-solid fa-star-half-stroke checked"></span>
+                                    <h6 class="mt-2 mb-2">Director: Some name here</h6>                        
+                                    <button type="button" class="btn btn-block btn-primary" data-bs-toggle="modal" data-bs-target="#reviewModal1">
+                                        Read Review
+                                    </button>                    
+                                </div>
+                            </a>
+                        </div>                      
+                        <!-- Modal -->
+                        <div class="modal fade reviewModal" id="reviewModal1" tabindex="-1" aria-labelledby="reviewModal1Label" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="reviewModal1Label">Example Movie Name</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body container">
+                                        <div class="row">
+                                            <div class="col-5">
+                                                <div class="card" style="width: 18rem;">
+                                                    <img src="img/fake-movie-poster.png" class="card-img-top" alt="...">
+                                                </div>
+                                                <div class="mt-3">
+                                                    Your Rating: 
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa-solid fa-star-half-stroke checked"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col"> 
+                                                <h2>Your Review</h2>
+                                                <p class="userReview">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque fuga eveniet rem excepturi quae nemo ipsum vitae. Provident qui necessitatibus animi dolorem sed explicabo hic nobis voluptatibus consectetur doloremque natus est alias dolore, consequuntur laborum fuga velit consequatur sit ipsum obcaecati exercitationem accusamus tempore. Consectetur fugiat doloribus sapiente, praesentium dolore exercitationem veritatis magni repudiandae rem officia rerum enim blanditiis assumenda sunt dolorum voluptatibus ducimus. Dolorum optio animi ad consectetur iste ducimus iure omnis impedit eos doloribus libero assumenda, incidunt esse ut ullam. Sit placeat dicta asperiores nemo ab veniam culpa eligendi voluptatum sed quisquam, esse odit, nisi optio, magnam quasi.</p>                                        
+                                                <button class="btn btn-secondary mt-3" onclick="convertToTextarea()">Edit Review</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                        <button type="button" onclick="saveAndConvertToParagraph()" id="saveButton" class="btn btn-primary">Save changes</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
