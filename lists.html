@@ -195,7 +195,7 @@
 
                     <div id="list1carousel" class="carousel slide" data-bs-interval="false">
                         <div style="float: right;">
-                            <button class="btn btn-primary">
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#listModal">
                                 Add to List
                             </button>
                             <button class="btn btn-primary" type="button" data-bs-target="#list1carousel" data-bs-slide="prev">
@@ -206,6 +206,35 @@
                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                 <span class="visually-hidden">Next</span>
                             </button>
+                            <!-- Modal -->
+                            <div class="modal fade" id="listModal" tabindex="-1" aria-labelledby="listModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="listModalLabel">Log Movie</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body container">
+                                            <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 w-100 pr-3">
+                                                <div class="input-group">
+                                                    <input id="modalSearchBarLog" type="text" class="form-control bg-light border-0 small" placeholder="Search..."
+                                                        aria-label="Search" aria-describedby="basic-addon2">
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-primary" id="listModalSearchButton" onclick="showSearchedMovieLogForLists()" type="button">
+                                                            <i class="fas fa-search fa-sm"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                            
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                            <button type="button" class="btn btn-primary" id="addToListBtn" data-bs-dismiss="modal" onclick="addToList1()" style="display: none;">Log Movie</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="carousel-inner">
                             <h4 class="h4">List 1</h4>
@@ -576,7 +605,7 @@
 
                     <div id="list2carousel" class="carousel slide" data-bs-interval="false">
                         <div style="float: right;">
-                            <button class="btn btn-primary">
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#listModal">
                                 Add to List
                             </button>
                             <button class="btn btn-primary" type="button" data-bs-target="#list2carousel" data-bs-slide="prev">

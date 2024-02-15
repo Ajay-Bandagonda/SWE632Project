@@ -144,6 +144,34 @@ function showSearchedMovieLog() {
   }
 }
 
+function showSearchedMovieLogForLists() {
+  var searchBar = document.querySelector("#modalSearchBarLog")
+  if (searchBar.value) {
+      var element = document.querySelector("#listModal .modal-body")
+
+      var htmlToAdd =
+      `
+      <div class="mt-3" style="margin: 0 auto; text-align: center;">
+          <h5>Is this the movie you were looking for?</h5>
+          <div class="card mt-3" style="width: 18rem; margin: 0 auto;">
+              <a data-bs-toggle="modal" data-bs-target="#reviewModal1">
+                  <img src="img/fake-movie-poster.png" class="card-img-top" alt="...">
+                  <div class="card-body">                                                   
+                      <div>
+                          <h5 class="card-title" style="color: black; font-weight: bold;">Example Movie Name</h5>
+                      </div> 
+                      <h6 class="mt-2 mb-2">Director: Some Director</h6>                                          
+                  </div>
+              </a>
+          </div>
+      </div>
+      `
+                        
+      element.innerHTML += htmlToAdd;
+      document.getElementById("addToListBtn").setAttribute("style", "display: block;")
+  }
+}
+
 function initalReviewLog() {
   var element = document.querySelector("#logModal .modal-body")
   var htmlToAdd =
@@ -253,4 +281,90 @@ function addToLog() {
   </form>
   `
   document.getElementById("addToLogBtn").setAttribute("style", "display: none;")
+}
+
+function addToList1() {
+  var list = document.querySelector("#list1carousel .row")
+  var htmlToAdd =
+  `
+  <div class="card movieCard" style="width: 18rem;">
+      <a data-bs-toggle="modal" data-bs-target="#reviewModal1">
+          <img src="img/fake-movie-poster.png" class="card-img-top" alt="...">
+          <div class="card-body">                                                   
+              <div>
+                  <h5 class="card-title" style="color: black; font-weight: bold;">Example Movie Name</h5>
+              </div> 
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa-solid fa-star-half-stroke checked"></span>
+              <h6 class="mt-2 mb-2">Director: Some name here</h6>                        
+              <button type="button" class="btn btn-block btn-primary" data-bs-toggle="modal" data-bs-target="#reviewModal1">
+                  Read Review
+              </button>                                        
+          </div>
+      </a>
+  </div>  
+  `
+                    
+  list.innerHTML += htmlToAdd;
+  document.querySelector("#listModal .modal-body").innerHTML = 
+  `
+  <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 w-100 pr-3">
+      <div class="input-group">
+          <input id="modalSearchBarLog" type="text" class="form-control bg-light border-0 small" placeholder="Search..."
+              aria-label="Search" aria-describedby="basic-addon2">
+          <div class="input-group-append">
+              <button class="btn btn-primary" id="logModalSearchButton" onclick="showSearchedMovieLog()" type="button">
+                  <i class="fas fa-search fa-sm"></i>
+              </button>
+          </div>
+      </div>
+  </form>
+  `
+  document.getElementById("addToListBtn").setAttribute("style", "display: none;")
+}
+
+function addToList2() {
+  var list = document.querySelector("#list2carousel .row")
+  var htmlToAdd =
+  `
+  <div class="card movieCard" style="width: 18rem;">
+      <a data-bs-toggle="modal" data-bs-target="#reviewModal1">
+          <img src="img/fake-movie-poster.png" class="card-img-top" alt="...">
+          <div class="card-body">                                                   
+              <div>
+                  <h5 class="card-title" style="color: black; font-weight: bold;">Example Movie Name</h5>
+              </div> 
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa-solid fa-star-half-stroke checked"></span>
+              <h6 class="mt-2 mb-2">Director: Some name here</h6>                        
+              <button type="button" class="btn btn-block btn-primary" data-bs-toggle="modal" data-bs-target="#reviewModal1">
+                  Read Review
+              </button>                                        
+          </div>
+      </a>
+  </div>  
+  `
+                    
+  list.innerHTML += htmlToAdd;
+  document.querySelector("#listModal .modal-body").innerHTML = 
+  `
+  <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 w-100 pr-3">
+      <div class="input-group">
+          <input id="modalSearchBarLog" type="text" class="form-control bg-light border-0 small" placeholder="Search..."
+              aria-label="Search" aria-describedby="basic-addon2">
+          <div class="input-group-append">
+              <button class="btn btn-primary" id="logModalSearchButton" onclick="showSearchedMovieLog()" type="button">
+                  <i class="fas fa-search fa-sm"></i>
+              </button>
+          </div>
+      </div>
+  </form>
+  `
+  document.getElementById("addToListBtn").setAttribute("style", "display: none;")
 }
